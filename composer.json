@@ -1,0 +1,20 @@
+{
+    "name": "wplazy/wplazyframework",
+    "description": "A lightweight rest api based framework to build WordPress plugins.",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=7.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WPLazy\\Framework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "justSohel",
+            "email": "thesohelrana.me@gmail.com"
+        }
+    ]
+}
