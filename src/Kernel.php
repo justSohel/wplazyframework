@@ -18,25 +18,11 @@ class Kernel
     public function bootstrap(): void
     {
         add_action('rest_api_init', function () {
-            Router::init();
-
-            if (file_exists($this->routesFile)) {
+            if ($this->routesFile && file_exists($this->routesFile)) {
                 require $this->routesFile;
             }
 
-            register_rest_route($this->namespace, '/(?P<path>.+)', [
-                'methods'  => ['GET', 'POST'],
-                'callback' => [$this, 'dispatch'],
-                'permission_callback' => '__return_true',
-            ]);
+            Router::register($this->namespace);
         });
-    }
-
-    public function dispatch(\WP_REST_Request $request)
-    {
-        $method = $request->get_method();
-        $uri    = '/' . ltrim($request['path'], '/');
-
-        return Router::dispatch($method, $uri);
     }
 }
